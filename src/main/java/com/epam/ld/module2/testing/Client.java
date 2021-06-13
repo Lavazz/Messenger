@@ -26,6 +26,11 @@ public class Client {
         this.name = name;
     }
 
+    public Client(String addresses, String subject) {
+        this.addresses = addresses;
+        this.subject = subject;
+    }
+
     public String getName() {
         return name;
     }

@@ -14,6 +14,16 @@ public class TemplateEngine {
      * @return the string
      */
     public String generateMessage(Template template, Client client) {
-        return null;
+        String name;
+        String messageContent = "Dear #{name}, the purpose of my mail is #{subject}";
+        if(client.getName()==null){
+            name="friend";
+        }else{
+            name=client.getName();
+        }
+        messageContent = messageContent.replace("#{subject}", client.getSubject());
+        messageContent = messageContent.replace("#{name}",name);
+        return messageContent;
+
     }
 }
