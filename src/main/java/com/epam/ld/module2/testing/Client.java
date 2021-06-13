@@ -31,6 +31,10 @@ public class Client {
         this.subject = subject;
     }
 
+    public Client(String addresses) {
+        this.addresses = addresses;
+    }
+
     public String getName() {
         return name;
     }

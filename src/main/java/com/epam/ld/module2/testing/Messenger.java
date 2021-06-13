@@ -1,6 +1,7 @@
 package com.epam.ld.module2.testing;
 
 
+import com.epam.ld.module2.testing.exception.EmptyPlaceholderException;
 import com.epam.ld.module2.testing.template.Template;
 import com.epam.ld.module2.testing.template.TemplateEngine;
 
@@ -31,7 +32,12 @@ public class Messenger {
      */
     public void sendMessage(Client client, Template template) {
         String messageContent =
-            templateEngine.generateMessage(template, client);
+                null;
+        try {
+            messageContent = templateEngine.generateMessage(template, client);
+        } catch (EmptyPlaceholderException e) {
+            e.printStackTrace();
+        }
         mailServer.send(client.getAddresses(), messageContent);
     }
 }
