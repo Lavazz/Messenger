@@ -1,0 +1,3 @@
+name=someName
+subject=someSubject
+day=someDay

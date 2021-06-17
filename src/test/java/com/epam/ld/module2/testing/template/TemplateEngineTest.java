@@ -18,7 +18,7 @@ class TemplateEngineTest {
 
     @Test
     void generateMessageValid() {
-        client = new Client("src/test/resources/inputTestData.txt");
+        client = new Client("src/test/resources/");
         String actual = templateEngine.generateMessage(template, client);
         String expected = "Dear someName, the purpose of my mail is someSubject. I suggest we discuss it someDay";
         assertEquals(expected, actual);
@@ -27,7 +27,7 @@ class TemplateEngineTest {
 
     @Test
     void generateMessageWithoutName() {
-        client = new Client("src/test/resources/inputWithOutName.txt");
+        client = new Client("src/test/resources/withoutName");
         String actual = templateEngine.generateMessage(template, client);
         String expected = "Dear , the purpose of my mail is someSubject. I suggest we discuss it someDay";
         assertEquals(expected, actual);
@@ -35,7 +35,7 @@ class TemplateEngineTest {
 
     @Test
     void generateMessageEmpty() {
-        client = new Client("src/test/resources/inputEmpty.txt");
+        client = new Client("src/test/resources/inputData.txt");
         Assertions.assertThrows(NoSuchElementException.class, () -> {
             templateEngine.generateMessage(template, client);
             ;

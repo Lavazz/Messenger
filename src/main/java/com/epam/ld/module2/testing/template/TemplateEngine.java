@@ -20,18 +20,16 @@ public class TemplateEngine {
      */
     HashMap<String, String> input;
 
-    public String generateMessage(Template template, Client client)  {
+    public String generateMessage(Template template, Client client) {
         String inputTemplate = template.templateContent;
-        String address=client.getAddresses();
+        String address = client.getAddresses();
 
         input = new HashMap<>();
 
-        if (address == "console") {
+        if (address == null) {
             getConsoleResources();
-        }else if(address!=null){
-            getDataFromFile(address);
-        }else {
-            throw new NoSuchElementException("address is empty");
+        } else if (address != null) {
+            getDataFromFile(address + "inputData.txt");
         }
 
         String name = input.get("name");
@@ -51,11 +49,11 @@ public class TemplateEngine {
 
     private void getDataFromFile(String address) {
 
-        try(BufferedReader br = new BufferedReader(new FileReader(address))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(address))) {
 
-            String s="";
-            int count=0;
-            while((s=br.readLine())!=null) {
+            String s = "";
+            int count = 0;
+            while ((s = br.readLine()) != null) {
                 String[] splitString = s.split("=");
                 if (splitString.length == 2) {
                     input.put(splitString[0], splitString[1]);
@@ -64,14 +62,14 @@ public class TemplateEngine {
                     count++;
                 }
             }
-            if(count==3){
+            if (count == 3) {
                 throw new NoSuchElementException("All fields is empty");
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

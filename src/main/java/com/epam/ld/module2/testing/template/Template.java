@@ -5,6 +5,6 @@ package com.epam.ld.module2.testing.template;
  */
 public class Template {
 
-    public static final String templateContent="Dear %s, the purpose of my mail is %s. I suggest we discuss it %s";
+    public static final String templateContent = "Dear %s, the purpose of my mail is %s. I suggest we discuss it %s";
 
 }
